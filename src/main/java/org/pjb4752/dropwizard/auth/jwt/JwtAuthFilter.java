@@ -14,8 +14,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.HttpHeaders;
 import java.security.Principal;
-import java.time.Instant;
-import java.util.Date;
 import java.util.Optional;
 
 import static java.util.Objects.requireNonNull;

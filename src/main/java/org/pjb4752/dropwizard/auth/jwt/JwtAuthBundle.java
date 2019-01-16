@@ -13,7 +13,7 @@ import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
 import javax.crypto.SecretKey;
 
-public abstract class JwtAuthBundle<T extends Configuration, P extends RoleUser>
+public abstract class JwtAuthBundle<T extends Configuration, P extends RoledPrincipal>
         implements ConfiguredBundle<T> {
 
     @Override

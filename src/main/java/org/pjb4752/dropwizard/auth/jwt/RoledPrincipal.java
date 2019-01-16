@@ -3,7 +3,7 @@ package org.pjb4752.dropwizard.auth.jwt;
 import java.security.Principal;
 import java.util.List;
 
-public interface RoleUser extends Principal {
+public interface RoledPrincipal extends Principal {
 
     List<String> getRoles();
 

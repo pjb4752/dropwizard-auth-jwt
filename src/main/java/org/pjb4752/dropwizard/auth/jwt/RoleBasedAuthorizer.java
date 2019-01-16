@@ -1,11 +1,12 @@
 package org.pjb4752.dropwizard.auth.jwt;
 
 import io.dropwizard.auth.Authorizer;
+import org.pjb4752.dropwizard.auth.jwt.RoledPrincipal;
 
-public class RoleBasedAuthorizer<P extends RoleUser> implements Authorizer<P> {
+public interface RoleBasedAuthorizer<P extends RoledPrincipal> extends Authorizer<P> {
 
     @Override
-    public boolean authorize(P principal, String role) {
+    default boolean authorize(P principal, String role) {
         return principal.hasRole(role);
     }
 }
