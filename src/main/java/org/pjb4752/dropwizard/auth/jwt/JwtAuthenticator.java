@@ -32,7 +32,7 @@ public class JwtAuthenticator<P extends RoledPrincipal> implements Authenticator
 
     private boolean isTokenExpired(Date expirationDate) {
         return Optional.ofNullable(expirationDate).
-                map(date -> date.toInstant().compareTo(Instant.now()) < 0).
+                map(date -> date.toInstant().isBefore(Instant.now())).
                 orElse(false);
     }
 }
