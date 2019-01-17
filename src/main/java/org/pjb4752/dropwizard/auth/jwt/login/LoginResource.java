@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
 
 @Path("/login")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -27,9 +29,11 @@ public class LoginResource<P extends RoledPrincipal> {
 
     @POST
     @Timed
-    public String create(@NotNull @Valid LoginRequest request) {
-        return loginService.login(request).map(this::createToken).
+    public LoginResponse create(@NotNull @Valid LoginRequest request) {
+        final String token = loginService.login(request).map(this::createToken).
                 orElseThrow(this::failedLoginException);
+
+        return new LoginResponse(token);
     }
 
     private String createToken(P roleUser) {
